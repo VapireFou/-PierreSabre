@@ -24,7 +24,7 @@ public class Humain {
 		return argent;
 	}
 	
-	private void setArgent(int argent) {
+	public void setArgent(int argent) {
 		this.argent = argent;
 	}
 
@@ -44,13 +44,13 @@ public class Humain {
 		
 	}
 	
-	private void perdreArgent(int prix) {
+	protected void perdreArgent(int prix) {
 		int nouveauSolde = this.getArgent() - prix;
 		this.setArgent(nouveauSolde);
 		
 	}
 	
-	private void gagnerArgent(int prix) {
+	protected void gagnerArgent(int prix) {
 		int nouveauSolde = this.getArgent() + prix;
 		this.setArgent(nouveauSolde);
 	}
