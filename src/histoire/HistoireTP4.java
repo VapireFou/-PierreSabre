@@ -8,7 +8,7 @@ import personnages.Yakusa;
 public class HistoireTP4 {
 
 	public static void main(String[] args) {
-		Humain prof = new Humain("Prof", "kombucha", 54);
+//		Humain prof = new Humain("Prof", "kombucha", 54);
 //		prof.direBonjour();
 //		prof.acheter("une boisson", 12);
 //		prof.boire();
@@ -17,16 +17,19 @@ public class HistoireTP4 {
 		
 		Commercant marco = new Commercant("Marco", 20);
 //		marco.direBonjour();
-//		marco.seFaireExtorquer();
-//		marco.recevoir(15);
+		marco.seFaireExtorquer();
+		marco.recevoir(15);
 //		marco.boire();
 		
-//		Yakusa yaku = new Yakusa("Yaku Le Noir", "whisky", 30, "Warsong");
+		Yakusa yaku = new Yakusa("Yaku Le Noir", "whisky", 30, "Warsong");
 //		yaku.direBonjour();
-//		yaku.extorquer(marco);
+		yaku.extorquer(marco);
 		
 		Ronin roro = new Ronin("Roro", "shochu", 60);
-		roro.direBonjour();
+//		roro.direBonjour();
 		roro.donner(marco);
+		
+		System.out.println(yaku.getReputation());
+		roro.provoquer(yaku);
 	}
 }
