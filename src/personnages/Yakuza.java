@@ -47,6 +47,11 @@ public class Yakuza extends Humain{
 		this.perdreArgent(argentPerdu);
 		return argentPerdu;
 		
-		
 	}
+	
+	@Override public void direBonjour() {
+		this.parler("Bonjour ! Je m'appelle " + this.getNom() + " et j'aime boire du " + this.getBoisson());
+		this.parler("Mon clan est celui de " + this.getClan());
+	}
+	
 }
