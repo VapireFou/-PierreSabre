@@ -21,10 +21,12 @@ public class Ronin extends Humain {
 	public void donner(Commercant beneficiaire) {
 		int valeurDon = this.getArgent() / 10;
 		beneficiaire.recevoir(valeurDon);
+		int ancienArgent = this.getArgent();
+		this.setArgent(ancienArgent - valeurDon);
 		
 	}
 	
-	public void provoquer(Yakusa adversaire) {
+	public void provoquer(Yakuza adversaire) {
 		int forceRonin = this.honneur*2;
 		this.parler("Je t'ai retrouvé vermine, tu vas payer pour ce que tu as fait à ce pauvre marchand !");
 		if ( forceRonin >= adversaire.getReputation() ) {

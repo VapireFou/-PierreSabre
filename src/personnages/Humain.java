@@ -1,9 +1,12 @@
 package personnages;
 
 public class Humain {
+	private static final int MEMOIRE_TAILLE = 30;
 	private String nom;
 	private String boisson;
 	private int argent;
+	protected int nbConnaissance = 0;
+	protected Humain[] memoire = new Humain[MEMOIRE_TAILLE]; 
 
 	
 	public Humain(String nom, String boisson, int argent) {
@@ -16,6 +19,10 @@ public class Humain {
 		return nom;
 	}
 	
+	public void setMemoire(Humain[] memoire) {
+		this.memoire = memoire;
+	}
+
 	public String getBoisson() {
 		return boisson;
 	}
@@ -66,4 +73,54 @@ public class Humain {
 		}
 		
 	}
+	
+	public void memoriser(Humain humainAMemoriser) {
+		if (nbConnaissance == MEMOIRE_TAILLE) {
+			Humain[] nouvelleMemoire = new Humain[MEMOIRE_TAILLE];
+			for (int i = 1; i < memoire.length; i++) {
+				nouvelleMemoire[i-1] = memoire[i];
+			}
+			this.setMemoire(nouvelleMemoire);
+			
+			memoire[nbConnaissance - 1] = humainAMemoriser;
+			
+		} else {
+			memoire[nbConnaissance] = humainAMemoriser;
+			nbConnaissance += 1;
+		}
+		
+	}
+
+	public void repondre(Humain homme1) {
+		this.direBonjour();
+		this.memoriser(homme1);
+		
+		
+	}
+	
+	
+	public void faireConnaissanceAvec(Humain homme2) {
+		this.direBonjour();
+		homme2.repondre(this);
+		this.memoriser(homme2);
+			
+	}
+	
+	public void listerConnaissance() {
+		String texte = "";
+		for (int i = 0; i < nbConnaissance; i++) {
+			texte += memoire[i].getNom() + ", ";
+		}
+		this.parler("Je connais beaucoup de monde dont : " + texte);
+		
+	}
+	
+
+	
+	
+	
+	
+	
+	
+	
 }
